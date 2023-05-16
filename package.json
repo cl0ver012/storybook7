@@ -1,0 +1,15 @@
+{
+  "name": "storybook",
+  "version": "0.0.1",
+  "description": "This is the storybook version 7+",
+  "main": "index.js",
+  "repository": "https://github.com/nakayamaiwao/storybook7",
+  "author": "clover",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.4"
+  }
+}
