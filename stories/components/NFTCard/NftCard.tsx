@@ -22,8 +22,8 @@ interface NFTComponentPropsType {
 }
 
 const NftCardDiv = styled.div<{ variant: string }>`
-  background: ${MockUp.theme.color.primaryBackground};
-  border: 1px solid ${MockUp.theme.color.primaryBorderColor};
+  background: ${({ theme }) => theme.colors.primaryBackground};
+  border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -39,24 +39,6 @@ const NftCardDiv = styled.div<{ variant: string }>`
     width: 100%;
   }
 `;
-// const NftCardDiv = styled.div<{ variant: string }>`
-//   background: ${({ theme }) => theme.colors.primaryBackground};
-//   border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
-//   border-radius: 8px;
-//   cursor: pointer;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   padding: 16px;
-//   gap: 16px;
-//   p {
-//     font-size: 16px;
-//     font-family: eina;
-//   }
-//   @media (max-width: 480px) {
-//     width: 100%;
-//   }
-// `;
 
 const Title = styled.div`
   font-size: 12px;
@@ -118,26 +100,10 @@ const CollectionWrapper = styled.div`
   align-items: center;
   gap: 8px;
   p {
-    color: ${MockUp.theme.color.primary};
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
-// const CollectionWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 8px;
-//   p {
-//     color: ${({ theme }) => theme.colors.primary};
-//   }
-// `;
-// const ArViewWrapper = styled.div`
-//   position: absolute;
-//   right: 8px;
-//   top: 8px;
-//   z-index: 11;
-//   display: flex;
-//   align-items: center;
-//   gap: 10px;
-// `;
+
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -152,21 +118,9 @@ const SaleInfo = styled.div`
     font-size: 20px;
     font-weight: 500;
     font-family: ${MockUp.theme.fonts.secondary};
-    color: ${MockUp.theme.color.primary};
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
-// const SaleInfo = styled.div`
-//   p {
-//     font-size: 12px;
-//     color: #737373;
-//   }
-//   h1 {
-//     font-size: 20px;
-//     font-weight: 500;
-//     font-family: ${({ theme }) => theme.fonts.secondary};
-//     color: ${({ theme }) => theme.colors.primary};
-//   }
-// `;
 
 function NftCard({
   nft,
@@ -187,7 +141,6 @@ function NftCard({
       </ImgDiv> */}
 
       <div>
-        <img src={nft.image} />
         <Image src={nft.image} variant="primary" />
         {/* <StyledImage src={nft.image} variant="primary" imgType={variant} /> */}
       </div>
