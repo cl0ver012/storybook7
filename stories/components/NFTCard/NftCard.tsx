@@ -179,13 +179,18 @@ function NftCard({
       setProfile(MockUp.profile);
     })();
   }, [nft]);
-  console.log("===========");
-  console.log(nft.image);
+
   return (
     <NftCardDiv variant={variant}>
-      <ImgDiv>
+      {/* <ImgDiv>
         <StyledImage src={nft.image} variant="primary" imgType={variant} />
-      </ImgDiv>
+      </ImgDiv> */}
+
+      <div>
+        <img src={nft.image} />
+        <Image src={nft.image} variant="primary" />
+        {/* <StyledImage src={nft.image} variant="primary" imgType={variant} /> */}
+      </div>
       <ContentWrapper>
         <div
           style={{
