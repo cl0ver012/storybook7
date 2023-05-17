@@ -1,5 +1,6 @@
-import styled from 'styled-components'
-import { createGlobalStyle } from 'styled-components'
+import React from "react";
+import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -283,23 +284,12 @@ const GlobalStyle = createGlobalStyle`
 #tooltipOpeChatList,#tooltipOpeChat {
   font-family: Mulish !important;
 }
-`
-
-export const GlobalContainer: React.FC<{
-  children: React.ReactNode
-  background?: string
-}> = ({ children, background = 'transparent' }) => {
-  return (
-    <Wrapper background={background}>
-      <FixedWidthWrapper>{children}</FixedWidthWrapper>
-    </Wrapper>
-  )
-}
+`;
 
 const Wrapper = styled.div<{ background: string }>`
   width: 100%;
   background-color: ${({ background }) => background} !important;
-`
+`;
 
 const FixedWidthWrapper = styled.div<{ background?: string }>`
   max-width: 1440px;
@@ -309,6 +299,16 @@ const FixedWidthWrapper = styled.div<{ background?: string }>`
   @media (max-width: 576px) {
     padding: 20px;
   }
-`
+`;
+export const GlobalContainer: React.FC<{
+  children: React.ReactNode;
+  background?: string;
+}> = ({ children, background = "transparent" }) => {
+  return (
+    <Wrapper background={background}>
+      <FixedWidthWrapper>{children}</FixedWidthWrapper>
+    </Wrapper>
+  );
+};
 
-export default GlobalStyle
+export default GlobalStyle;
