@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "../Img";
+import Log from "../Log";
 import MockUp from "./MockUp";
 // import DateCountdown from "../util/DateCountdownMin";
 import { ProfileType, NFTCardType } from "../utils/types";
@@ -26,8 +27,7 @@ const NftCardDiv = styled.div<{ variant: string }>`
   border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
   border-radius: 8px;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
   justify-content: space-between;
   padding: 16px;
   gap: 16px;
@@ -39,6 +39,24 @@ const NftCardDiv = styled.div<{ variant: string }>`
     width: 100%;
   }
 `;
+// const NftCardDiv = styled.div<{ variant: string }>`
+//   background: ${({ theme }) => theme.colors.primaryBackground};
+//   border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
+//   border-radius: 8px;
+//   cursor: pointer;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   padding: 16px;
+//   gap: 16px;
+//   p {
+//     font-size: 16px;
+//     font-family: eina;
+//   }
+//   @media (max-width: 480px) {
+//     width: 100%;
+//   }
+// `;
 
 const Title = styled.div`
   font-size: 12px;
@@ -89,11 +107,16 @@ const ImgDiv = styled.div`
   border-radius: 8px;
   height: 300px;
 `;
-const Logo = styled(Image)<{ size: string }>`
+const Logo = styled(Log)<{ size: string }>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: 50%;
 `;
+// const Logo = styled(Image)<{ size: string }>`
+//   width: ${({ size }) => size};
+//   height: ${({ size }) => size};
+//   border-radius: 50%;
+// `;
 
 const CollectionWrapper = styled.div`
   display: flex;
@@ -136,14 +159,10 @@ function NftCard({
 
   return (
     <NftCardDiv variant={variant}>
-      {/* <ImgDiv>
+      <ImgDiv>
         <StyledImage src={nft.image} variant="primary" imgType={variant} />
-      </ImgDiv> */}
+      </ImgDiv>
 
-      <div>
-        <Image src={nft.image} variant="primary" />
-        {/* <StyledImage src={nft.image} variant="primary" imgType={variant} /> */}
-      </div>
       <ContentWrapper>
         <div
           style={{
@@ -169,8 +188,9 @@ function NftCard({
         <CollectionWrapper>
           <Logo src={profile.avatar} size="24px" variant="secondary" />
           <p>
-            Profile Name: {profile.name}
-            {"   "}Nft Owner : {nft.owner}
+            {profile.name}
+            {"   "}
+            {nft.owner}
           </p>
         </CollectionWrapper>
       </ContentWrapper>
