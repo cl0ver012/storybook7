@@ -21,27 +21,9 @@ interface NFTComponentPropsType {
   variant?: string;
 }
 
-const NftCardDiv = styled.div<{ variant: string }>`
-  background: ${MockUp.theme.color.primaryBackground};
-  border: 1px solid ${MockUp.theme.color.primaryBorderColor};
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 16px;
-  gap: 16px;
-  p {
-    font-size: 16px;
-    font-family: eina;
-  }
-  @media (max-width: 480px) {
-    width: 100%;
-  }
-`;
 // const NftCardDiv = styled.div<{ variant: string }>`
-//   background: ${({ theme }) => theme.colors.primaryBackground};
-//   border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
+//   background: ${MockUp.theme.color.primaryBackground};
+//   border: 1px solid ${MockUp.theme.color.primaryBorderColor};
 //   border-radius: 8px;
 //   cursor: pointer;
 //   display: flex;
@@ -57,6 +39,25 @@ const NftCardDiv = styled.div<{ variant: string }>`
 //     width: 100%;
 //   }
 // `;
+
+const NftCardDiv = styled.div<{ variant: string }>`
+  background: ${({ theme }) => theme.colors.primaryBackground};
+  border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  gap: 16px;
+  p {
+    font-size: 16px;
+    font-family: eina;
+  }
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+`;
 
 const Title = styled.div`
   font-size: 12px;
@@ -187,7 +188,6 @@ function NftCard({
       </ImgDiv> */}
 
       <div>
-        <img src={nft.image} />
         <Image src={nft.image} variant="primary" />
         {/* <StyledImage src={nft.image} variant="primary" imgType={variant} /> */}
       </div>
