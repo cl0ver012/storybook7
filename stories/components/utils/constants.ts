@@ -26,8 +26,7 @@ export const spaces = {
   18: "18px",
   24: "24px",
 };
-export const default_image =
-  "https://miro.medium.com/v2/resize:fit:679/1*1T5O1_-zrHWlrucA07txZw.png";
+export const default_image = "/public/default.jpg";
 export const default_featured_image = "/default-featured.png";
 
 export const DEFAULT_TOKEN_BALANCE_REFETCH_INTERVAL = 10000;

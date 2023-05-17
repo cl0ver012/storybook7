@@ -33,7 +33,7 @@ const Image = ({
   variant = "primary",
 }) => {
   const [imgSrc, setImgSrc] = useState(default_image);
-  const [type, setType] = useState("");
+  const [type, setType] = useState("image");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setImgSrc(src);
@@ -47,9 +47,11 @@ const Image = ({
       }
     })();
   }, [src]);
+
   const getWholeComponent = () => {
     switch (type) {
       case "video":
+        console.log("video---------");
         return (
           <VideoWrapper>
             {loading && <Skeleton className={className} />}
@@ -64,6 +66,10 @@ const Image = ({
           </VideoWrapper>
         );
       case "image":
+        console.log("====");
+        console.log(imgSrc);
+        console.log(imgSrc + IMAGE_SIZE[variant]);
+
         return (
           <img
             className={className}
@@ -73,6 +79,7 @@ const Image = ({
           />
         );
       case "gif":
+        console.log("gif=================");
         return (
           <img
             className={className}
