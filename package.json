@@ -26,6 +26,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "styled-components": "^6.0.0-rc.1",
     "vite": "^4.3.6"
   }
 }
