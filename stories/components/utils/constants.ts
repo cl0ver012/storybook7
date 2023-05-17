@@ -26,8 +26,8 @@ export const spaces = {
   18: "18px",
   24: "24px",
 };
-export const default_image = "/public/default.jpg";
-export const default_featured_image = "/default-featured.png";
+export const default_image = "/stories/assets/default.jpg";
+export const default_featured_image = "/stories/assets/default.jpg";
 
 export const DEFAULT_TOKEN_BALANCE_REFETCH_INTERVAL = 10000;
 export const SLIPPAGE_OPTIONS = [0.01, 0.02, 0.03, 0.05];

@@ -17,19 +17,19 @@ const IMAGE_SIZE: any = {
   full: "",
 };
 
-const VideoWrapper = styled.div`
+const VideoWrapper_Log = styled.div`
   position: relative;
   height: 100%;
 `;
 
-const VideoContainer = styled.div<{ show: boolean }>`
+const VideoContainer_Log = styled.div<{ show: boolean }>`
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
   height: ${({ show }) => (show ? "100%" : "0 !important")};
 `;
 
 let res: any;
 
-const Image = ({
+const Log = ({
   className = "",
   src = "",
   defaultImage = default_image,
@@ -63,17 +63,17 @@ const Image = ({
     switch (type) {
       case "video":
         return (
-          <VideoWrapper>
+          <VideoWrapper_Log>
             {loading && <Skeleton className={className} />}
-            <VideoContainer show={!loading} className={className}>
+            <VideoContainer_Log show={!loading} className={className}>
               <CustomVideoPlayer
                 src={`${imgSrc}?stream=true`}
                 onCanPlayThrough={() => {
                   setLoading(false);
                 }}
               />
-            </VideoContainer>
-          </VideoWrapper>
+            </VideoContainer_Log>
+          </VideoWrapper_Log>
         );
       case "image":
         return (
@@ -101,4 +101,4 @@ const Image = ({
   return <>{res}</>;
 };
 
-export default Image;
+export default Log;
