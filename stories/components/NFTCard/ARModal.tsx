@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { ChakraProvider, Modal, ModalContent, ModalOverlay, useDisclosure } from "@chakra-ui/react";
-import Spline from "@splinetool/react-spline";
-import Hexagon from "../util/icons";
-import { validateUri } from "../util/conversion";
+import {
+  ChakraProvider,
+  Modal,
+  ModalContent,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
 
+import Spline from "@splinetool/react-spline";
+import Hexagon from "../utils/icons";
+
+import MockUp from "./MockUp";
 const Container = styled(ModalContent)<{ isAr: boolean }>`
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   background: rgba(255, 255, 255, 0.06) !important;
@@ -52,6 +59,16 @@ const ARModal = ({ uri = "", content = "AR" }) => {
   return (
     <ChakraProvider>
       <ArViewWrapper
+        disabled={!MockUp.validated}
+        onClick={(e) => {
+          e.preventDefault();
+          if (!MockUp.validated) return;
+          onOpen();
+        }}
+      >
+        <Hexagon /> {content} VIEW
+      </ArViewWrapper>
+      {/* <ArViewWrapper
         disabled={!validateUri(uri)}
         onClick={(e) => {
           e.preventDefault();
@@ -60,8 +77,13 @@ const ARModal = ({ uri = "", content = "AR" }) => {
         }}
       >
         <Hexagon /> {content} VIEW
-      </ArViewWrapper>
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose} isCentered>
+      </ArViewWrapper> */}
+      <Modal
+        blockScrollOnMount={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+      >
         <ModalOverlay backdropFilter="blur(14px)" bg="rgba(0, 0, 0, 0.34)" />
         <Container isAr={content === "AR"}>
           {content === "AR" ? (
@@ -74,7 +96,9 @@ const ARModal = ({ uri = "", content = "AR" }) => {
               width="360px"
             />
           ) : (
-            <Spline scene={`https://prod.spline.design/${uri}/scene.splinecode`} />
+            <Spline
+              scene={`https://prod.spline.design/${uri}/scene.splinecode`}
+            />
           )}
         </Container>
       </Modal>

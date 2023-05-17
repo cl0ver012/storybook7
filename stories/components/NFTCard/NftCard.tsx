@@ -5,10 +5,10 @@ import styled from "styled-components";
 import Image from "../Img";
 import MockUp from "./MockUp";
 // import DateCountdown from "../util/DateCountdownMin";
-
-import { NFTCardType, ProfileType } from "../util/types";
+import { ProfileType, NFTCardType } from "../utils/types";
 import { JsxElement } from "typescript";
 import ARModal from "./ARModal";
+import { theme } from "@chakra-ui/react";
 
 const saleType: any = {
   NotSale: "Not for sale",
@@ -22,8 +22,8 @@ interface NFTComponentPropsType {
 }
 
 const NftCardDiv = styled.div<{ variant: string }>`
-  background: ${({ theme }) => theme.colors.primaryBackground};
-  border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
+  background: ${MockUp.theme.color.primaryBackground};
+  border: 1px solid ${MockUp.theme.color.primaryBorderColor};
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -39,6 +39,24 @@ const NftCardDiv = styled.div<{ variant: string }>`
     width: 100%;
   }
 `;
+// const NftCardDiv = styled.div<{ variant: string }>`
+//   background: ${({ theme }) => theme.colors.primaryBackground};
+//   border: 1px solid ${({ theme }) => theme.colors.primaryBorderColor};
+//   border-radius: 8px;
+//   cursor: pointer;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   padding: 16px;
+//   gap: 16px;
+//   p {
+//     font-size: 16px;
+//     font-family: eina;
+//   }
+//   @media (max-width: 480px) {
+//     width: 100%;
+//   }
+// `;
 
 const Title = styled.div`
   font-size: 12px;
@@ -100,9 +118,17 @@ const CollectionWrapper = styled.div`
   align-items: center;
   gap: 8px;
   p {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${MockUp.theme.color.primary};
   }
 `;
+// const CollectionWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 8px;
+//   p {
+//     color: ${({ theme }) => theme.colors.primary};
+//   }
+// `;
 // const ArViewWrapper = styled.div`
 //   position: absolute;
 //   right: 8px;
@@ -125,12 +151,27 @@ const SaleInfo = styled.div`
   h1 {
     font-size: 20px;
     font-weight: 500;
-    font-family: ${({ theme }) => theme.fonts.secondary};
-    color: ${({ theme }) => theme.colors.primary};
+    font-family: ${MockUp.theme.fonts.secondary};
+    color: ${MockUp.theme.color.primary};
   }
 `;
+// const SaleInfo = styled.div`
+//   p {
+//     font-size: 12px;
+//     color: #737373;
+//   }
+//   h1 {
+//     font-size: 20px;
+//     font-weight: 500;
+//     font-family: ${({ theme }) => theme.fonts.secondary};
+//     color: ${({ theme }) => theme.colors.primary};
+//   }
+// `;
 
-function NftCard({ nft, variant = "primary" }: NFTComponentPropsType): JSX.Element {
+function NftCard({
+  nft,
+  variant = "primary",
+}: NFTComponentPropsType): JSX.Element {
   const tokenInfo = MockUp.tokeInfo;
   const [profile, setProfile] = useState<ProfileType>(MockUp.profile);
   useEffect(() => {
@@ -138,9 +179,11 @@ function NftCard({ nft, variant = "primary" }: NFTComponentPropsType): JSX.Eleme
       setProfile(MockUp.profile);
     })();
   }, [nft]);
+  console.log("===========");
+  console.log(nft.image);
   return (
     <NftCardDiv variant={variant}>
-      {/* <ImgDiv>
+      <ImgDiv>
         <StyledImage src={nft.image} variant="primary" imgType={variant} />
       </ImgDiv>
       <ContentWrapper>
@@ -153,7 +196,11 @@ function NftCard({ nft, variant = "primary" }: NFTComponentPropsType): JSX.Eleme
         >
           <SaleInfo>
             <p>{saleType[nft.saleType]}</p>
-            <h1>{nft.saleType === "NotSale" ? nft.name : `${nft.price} ${tokenInfo?.symbol}`}</h1>
+            <h1>
+              {nft.saleType === "NotSale"
+                ? nft.name
+                : `${nft.price} ${tokenInfo?.symbol}`}
+            </h1>
           </SaleInfo>
           {nft.saleType === "Auction" && (
             <div style={{ width: "fit-content" }}>
@@ -168,7 +215,7 @@ function NftCard({ nft, variant = "primary" }: NFTComponentPropsType): JSX.Eleme
             {"   "}Nft Owner : {nft.owner}
           </p>
         </CollectionWrapper>
-      </ContentWrapper> */}
+      </ContentWrapper>
     </NftCardDiv>
   );
 }

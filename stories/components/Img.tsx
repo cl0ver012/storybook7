@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CustomVideoPlayer from "./CustomVideoPlayer";
-import { PINATA_PRIMARY_IMAGE_SIZE, PINATA_SECONDARY_IMAGE_SIZE, default_image } from "./util/constants";
+import {
+  PINATA_PRIMARY_IMAGE_SIZE,
+  PINATA_SECONDARY_IMAGE_SIZE,
+  default_image,
+} from "./utils/constants";
 
 import Skeleton from "./Skeleton";
 
@@ -22,10 +26,13 @@ const VideoContainer = styled.div<{ show: boolean }>`
   height: ${({ show }) => (show ? "100%" : "0 !important")};
 `;
 
-const Image = ({ className = "", src = "", defaultImage = default_image, variant = "primary" }) => {
-  console.log("sdfsdfsdfds");
+const Image = ({
+  className = "",
+  src = "",
+  defaultImage = default_image,
+  variant = "primary",
+}) => {
   const [imgSrc, setImgSrc] = useState(default_image);
-  console.log("==========");
   const [type, setType] = useState("");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -66,7 +73,14 @@ const Image = ({ className = "", src = "", defaultImage = default_image, variant
           />
         );
       case "gif":
-        return <img className={className} src={imgSrc} onError={() => setImgSrc(defaultImage)} alt="img" />;
+        return (
+          <img
+            className={className}
+            src={imgSrc}
+            onError={() => setImgSrc(defaultImage)}
+            alt="img"
+          />
+        );
       default:
         return null;
     }
